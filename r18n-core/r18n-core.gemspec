@@ -26,4 +26,6 @@ Gem::Specification.new do |s|
   s.email    = 'andrey@sitnik.ru'
   s.homepage = 'https://github.com/ai/r18n'
   s.license  = 'LGPL-3.0'
+
+  s.add_dependency 'gorilla_patch', '~> 3.0'
 end

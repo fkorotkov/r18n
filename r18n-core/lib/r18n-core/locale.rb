@@ -19,6 +19,7 @@
 
 require 'singleton'
 require 'bigdecimal'
+require 'gorilla_patch/inflections'
 
 module R18n
   # Information about locale (language, country and other special variant
@@ -153,6 +154,8 @@ module R18n
       "Locale #{code} (#{title})"
     end
 
+    using GorillaPatch::Inflections
+
     # Convert +object+ to String. It support Integer, Float, Time, Date
     # and DateTime.
     #
@@ -181,7 +184,11 @@ module R18n
 
         send format_method_name, obj, *params
       else
-        obj.to_s
+        format_method_name = "format_#{obj.class.underscore}_#{format}"
+
+        return obj.to_s unless respond_to? format_method_name
+
+        send format_method_name, obj, *params
       end
     end
 
