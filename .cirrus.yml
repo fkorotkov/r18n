@@ -1,4 +1,6 @@
 test_task:
+  env:
+    LANG: C.UTF-8
   container:
     matrix:
       image: ruby:2.3
