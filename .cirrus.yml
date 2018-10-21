@@ -4,6 +4,7 @@ test_task:
       image: ruby:2.3
       image: ruby:2.4
       image: ruby:2.5
+  cat_script: cat r18n-rails-api/spec/data/simple/ru.rb
   bundle_cache:
     folder: /usr/local/bundle
     fingerprint_script: >
